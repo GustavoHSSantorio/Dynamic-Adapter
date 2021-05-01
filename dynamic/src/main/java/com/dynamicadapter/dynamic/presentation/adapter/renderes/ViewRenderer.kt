@@ -6,7 +6,7 @@ import com.dynamicadapter.dynamic.domain.model.SimpleVO
 
 abstract class ViewRenderer<VH : RecyclerView.ViewHolder>(val key: String, val viewType: Int) {
 
-    abstract fun bindView(model: SimpleVO, holder: VH, isHidden: Boolean, position: Int)
+    abstract fun bindView(model: SimpleVO, holder: VH, position: Int)
     abstract fun createViewHolder(parent: ViewGroup): VH
     open fun filterByQuery(query: String, simpleVO: SimpleVO) = false
 }

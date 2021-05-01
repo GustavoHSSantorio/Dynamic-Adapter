@@ -9,15 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dynamicadapter.dynamic.domain.model.SimpleVO
 import com.dynamicadapter.dynamic.presentation.adapter.renderes.EmptyViewHolder
 import com.dynamicadapter.dynamic.presentation.adapter.renderes.ViewRenderer
-import javax.inject.Inject
 
 
-class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
-    Dynamic {
+class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),Dynamic {
 
-    private val mDiffer: AsyncListDiffer<SimpleVO?> = AsyncListDiffer(this, SimpleVOItemCallback)
+    private val differ: AsyncListDiffer<SimpleVO?> = AsyncListDiffer(this, SimpleVOItemCallback)
 
-    var ishHidden: Boolean = false
     var renderers = SparseArray<ViewRenderer<RecyclerView.ViewHolder>>()
     private val originalList: ArrayList<SimpleVO> = arrayListOf()
     var bindingLiveData: MutableLiveData<Int>? = null
@@ -27,17 +24,17 @@ class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
             ?: EmptyViewHolder(FrameLayout(parent.context))
     }
 
-    override fun getItemCount(): Int = mDiffer.currentList.size
+    override fun getItemCount(): Int = differ.currentList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         bindingLiveData?.value = position
-        mDiffer.currentList.getOrNull(position)?.let { vo ->
-            findRenderOrNull(vo.key)?.bindView(vo, holder, ishHidden, position)
+        differ.currentList.getOrNull(position)?.let { vo ->
+            findRenderOrNull(vo.key)?.bindView(vo, holder, position)
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return mDiffer.currentList.getOrNull(position)?.let {
+        return differ.currentList.getOrNull(position)?.let {
             findRenderOrNull(it.key)?.viewType ?: super.getItemViewType(position)
         } ?: super.getItemViewType(position)
     }
@@ -53,27 +50,21 @@ class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     override fun getRenderer(viewType: Int): ViewRenderer<RecyclerView.ViewHolder> =
         renderers.get(viewType)
 
-    override fun setViewObject(vos: List<SimpleVO>, ishHidden: Boolean) {
-        this.ishHidden = ishHidden
-        this.mDiffer.submitList(vos)
-        originalList.addAll(vos)
-    }
 
-    override fun setViewObjectDiff(vos: List<SimpleVO>, ishHidden: Boolean) {
-        this.ishHidden = ishHidden
-        mDiffer.submitList(vos)
+    override fun setViewObjectDiff(vos: List<SimpleVO>) {
+        differ.submitList(vos)
     }
 
     override fun updateViewAt(vo: SimpleVO, index: Int) {
-        val list = mDiffer.currentList.toMutableList()
+        val list = differ.currentList.toMutableList()
         list[index] = vo
-        setViewObjectDiff(list.toList().toList() as List<SimpleVO>, ishHidden)
+        setViewObjectDiff(list.toList().toList() as List<SimpleVO>)
     }
 
     override fun notifyPositionRemovedAt(position: Int) {
-        val list = mDiffer.currentList.toMutableList()
+        val list = differ.currentList.toMutableList()
         list.removeAt(position)
-        setViewObjectDiff(list.toList().toList() as List<SimpleVO>, ishHidden)
+        setViewObjectDiff(list.toList().toList() as List<SimpleVO>)
     }
 
     override fun filterByQuery(query: String, vararg type: Int) {
@@ -93,7 +84,7 @@ class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     }
 
     override fun notifyChanges(vos: List<SimpleVO>) {
-        with(mDiffer) {
+        with(differ) {
             submitList(vos)
         }
         notifyDataSetChanged()
@@ -122,6 +113,6 @@ class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     }
 
     override fun clear() {
-        mDiffer.submitList(emptyList())
+        differ.submitList(emptyList())
     }
 }

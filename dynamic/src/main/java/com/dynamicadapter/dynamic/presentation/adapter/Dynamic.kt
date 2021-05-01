@@ -7,8 +7,7 @@ import com.dynamicadapter.dynamic.presentation.adapter.renderes.ViewRenderer
 interface Dynamic {
     fun registerRenderer(renderer: ViewRenderer<*>)
     fun getRenderer(viewType: Int): ViewRenderer<RecyclerView.ViewHolder>
-    fun setViewObject(vos: List<SimpleVO>, ishHidden: Boolean = false)
-    fun setViewObjectDiff(vos: List<SimpleVO>, ishHidden: Boolean = false)
+    fun setViewObjectDiff(vos: List<SimpleVO>)
     fun updateViewAt(vo: SimpleVO, index: Int)
     fun notifyPositionRemovedAt(position: Int)
     fun filterByQuery(query: String, vararg type: Int)
