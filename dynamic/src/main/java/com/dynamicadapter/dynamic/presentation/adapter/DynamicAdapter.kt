@@ -12,7 +12,7 @@ import com.dynamicadapter.dynamic.presentation.adapter.renderes.ViewRenderer
 import javax.inject.Inject
 
 
-class DynamicAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     Dynamic {
 
     private val mDiffer: AsyncListDiffer<SimpleVO?> = AsyncListDiffer(this, SimpleVOItemCallback)
