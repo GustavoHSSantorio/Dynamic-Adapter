@@ -1,0 +1,165 @@
+buildscript {
+    ext{
+        // Gradle
+        gradle_plugin_version = '3.6.1'
+        google_services_version = '4.2.0'
+        kotlin_version = '1.4.10'
+
+        // Test
+        test_junit_version = '4.12'
+        test_runner_version = '1.2.0'
+        mockk = '1.9'
+        test_espresso_version = '3.2.0'
+        test_rules_version = '1.2.0'
+        test_hamcrest = '1.3'
+        test_uiautomator = '2.2.0'
+        test_ext = '1.1.1'
+        jacoco_version = '0.8.5'
+        mockito_version = '3.0.0'
+        mockito_kotlin = '2.1.0'
+        mockito_android = '3.2.4'
+        fragment_scenario_version = '1.2.4'
+        robolectric_version = '4.2'
+
+        // Support
+        support_version = '1.1.0'
+        cardview_version = '1.0.0'
+        material_version = '1.2.1'
+        constraint_motion_version = '2.0.0-beta3'
+        dynamicanimation_version = '1.0.0'
+        picasso_version = '2.71828'
+        multidex_version = '2.0.1'
+        activity_ktx_version = '1.0.0'
+        fragment_ktx_version = '1.2.4'
+
+
+        // Swipe Layout
+        swipe_layout_version = '1.2.0@aar'
+
+        // Shimmer
+        shimmer_version = '0.5.0'
+        // Lottie
+        lottie_version = "3.0.7"
+
+        // Chrometab
+        chrometab_version = "1.0.0"
+
+        // Biometric Auth
+        biometric_auth_version = "1.0.58"
+        biometric_auth_oiti_version = "1.6.1"
+        biometric_auth_bouncy_castle_version = "1.46"
+        biometric_auth_oiti_retrofit_gson = "2.9.0"
+        biometric_auth_oiti_gif = "1.1.7"
+
+        // AndroidX
+        androidx_core_ktx = "1.1.0"
+        androidx_annotation = "1.1.0"
+        archtecture_component_lifecycle = "2.0.0"
+        lifecycle_extension = "2.2.0"
+        navigation_version = "2.2.2"
+        viewpager2_version = "1.0.0"
+
+        // Di
+        dagger_version = '2.24'
+        koin_version = "2.1.3"
+
+        // View Model
+        viewmodel_version = '2.0.0'
+
+        //Work Manager
+        workmanager_version = '2.2.0-rc01'
+
+        // Databind
+        databinding_version = '3.1.3'
+
+        //Coroutines
+        coroutines_version = '1.3.7'
+
+        // RX
+        rxandroid_version = '2.1.1'
+        rxkotlin_version = '2.4.0'
+        rxjava_version = '2.2.11'
+        rxjava_adapter = '1.0.0'
+        rxbinding_version = "2.2.0"
+        rxbinding_androidx_version = "3.0.0"
+
+        // Connection
+        retrofit_version = '2.9.0'
+        moshi_version = '1.8.0'
+        okhttp_version = '3.12.10'
+        jacksonVersion = '2.8.5'
+        gson_version = '2.8.5'
+
+        // Firebase
+        fabric_version = '2.3.0'
+        firebase_crashlytics_version = '17.2.2'
+        firebase_core_version = '17.0.1'
+        firebase_auth_version = '19.3.1'
+        firebase_remote_config_version = '19.1.4'
+        firebase_firestore_version = '21.0.0'
+        firebase_analytics_version = '18.0.0'
+        firebase_messaging_version = '20.1.5'
+        firebase_dynamiclink_version = '19.1.1'
+
+        // ZXING
+        zxing_embedded_version = '3.6.0'
+        zxing_version = '3.4.0'
+
+        // GUAVA
+        google_guava = '28.1-android'
+        adsid_version = '16.0.0'
+
+        // Apps Flyer
+        apps_flyer_version = '6.0.0'
+
+        // Marketing Cloud
+        marketingcloud_version = "6.4.0"
+
+        // App Dynamics
+        app_dynamics_version = "20.7.1"
+
+        // Play services
+        play_services_auth_version = '17.0.0'
+
+        // Install Referrer
+        install_referrer_version = "1.0"
+
+        // APPCenter
+        appCenterSdkVersion = '1.4.0'
+
+        // Youtube
+        youtubeplayer_version = '10.0.4'
+        google_api_client = '1.25.0'
+        youtube_api_version = 'v3-rev212-1.25.0'
+
+        // Authenticator
+        authenticator_version = '11.0.0'
+        tag_manager_version = '17.0.0'
+
+        // PDF Viewer
+        pdfViewerVersion = '2.8.2'
+
+        // RX Permission
+        rxpermission_version = '0.10.2'
+
+        // Ticker
+        ticker_version = '2.0.1'
+
+        //Flex Box
+        flexbox_version = '1.1.0'
+
+        // Heart Beat
+        heartbeat_version = '2.5.1.264263'
+
+        // Wallets
+        google_pay_version = '16.0.0'
+        tap_and_pay_version = '17.1.0.1'
+        samsung_pay_version = '2.13.0'
+
+        // TableView
+        tableView_version = '0.8.9.2'
+
+        // DexGuard
+        dexguard_version = "8.7.06"
+    }
+}
