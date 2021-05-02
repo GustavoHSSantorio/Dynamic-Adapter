@@ -7,13 +7,16 @@ import com.dynamicadapter.dynamic.domain.mapper.convertToVO
 import com.dynamicadapter.dynamic.domain.model.SimpleVO
 import com.dynamicadapter.dynamic.presentation.adapter.renderes.ViewRenderer
 
-class TextViewRender : ViewRenderer<TextViewRender.TextViewHolder>("DynamicTextView", 1) {
+class TextViewRender(private val block : () -> Unit ) : ViewRenderer<TextViewRender.TextViewHolder>("DynamicTextView", 1) {
 
     inner class TextViewHolder(val textView : TextView) : RecyclerView.ViewHolder(textView)
 
     override fun bindView(model: SimpleVO, holder: TextViewHolder, position: Int) {
         val textVO = model.value.convertToVO<TextVO>()
         holder.textView.text = textVO.text
+        holder.textView.setOnClickListener {
+            block.invoke()
+        }
     }
 
     override fun createViewHolder(parent: ViewGroup): TextViewHolder =

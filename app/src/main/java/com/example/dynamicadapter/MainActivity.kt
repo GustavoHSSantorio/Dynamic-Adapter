@@ -17,7 +17,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.recycler.adapter =  dynamicAdapter as DynamicAdapter
-        dynamicAdapter.registerRenderer(TextViewRender())
+        dynamicAdapter.registerRenderer(TextViewRender {
+            println(">>>>>>")
+        })
+
         dynamicAdapter.setViewObjectDiff(
             listOf(
                 SimpleVO(
