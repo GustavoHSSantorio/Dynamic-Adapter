@@ -12,7 +12,6 @@ import com.dynamicadapter.dynamic.presentation.adapter.renderes.ViewRenderer
 
 
 class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),Dynamic {
-
     private val differ: AsyncListDiffer<SimpleVO?> = AsyncListDiffer(this, SimpleVOItemCallback)
 
     var renderers = SparseArray<ViewRenderer<RecyclerView.ViewHolder>>()
@@ -109,6 +108,7 @@ class DynamicAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),Dynamic {
         iterateOnRenders {
             if (it.key == key) return it
         }
+
         return null
     }
 

@@ -3,7 +3,6 @@ package com.dynamicadapter.dynamic.presentation.adapter
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 import com.dynamicadapter.dynamic.domain.model.SimpleVO
-import com.dynamicadapter.dynamic.domain.DynamicComparable
 import java.util.*
 
 object SimpleVOItemCallback : DiffUtil.ItemCallback<SimpleVO>(){
@@ -18,15 +17,12 @@ object SimpleVOItemCallback : DiffUtil.ItemCallback<SimpleVO>(){
     @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: SimpleVO, newItem: SimpleVO): Boolean {
 
-        if (!oldItem.title.equals(newItem.title, true))
-            return false
-
         val oldItemValue = oldItem.value
         val newItemValue = newItem.value
 
         return when {
+            //Note: Because retrofit return AbstracMap
             oldItemValue is AbstractMap<*, *> && newItemValue is AbstractMap<*, *> -> oldItemValue == newItemValue
-            oldItemValue is DynamicComparable -> oldItemValue.contentEquals(newItemValue)
             else -> oldItemValue == newItemValue
         }
     }

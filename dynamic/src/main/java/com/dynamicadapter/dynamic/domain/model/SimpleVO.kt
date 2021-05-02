@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class SimpleVO(
     @JsonProperty("key") val key: String = "",
-    @JsonProperty("title") val title: String? = "",
     @JsonProperty("value") val value: Any? = null
 ) {
 
@@ -17,7 +16,6 @@ data class SimpleVO(
         other as SimpleVO
 
         if (key != other.key) return false
-        if (title != other.title) return false
         if (value != other.value) return false
 
         return true
@@ -25,7 +23,6 @@ data class SimpleVO(
 
     override fun hashCode(): Int {
         var result = key.hashCode()
-        result = 31 * result + (title?.hashCode() ?: 0)
         result = 31 * result + (value?.hashCode() ?: 0)
         return result
     }
